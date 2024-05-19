@@ -1,0 +1,64 @@
+<div class="modal-xl">
+    <form [formGroup]="editRestForm" (ngSubmit)="editRest()" class="custom-form">
+        <div class="header">
+          <h1>Editar Restaurante</h1>
+          <img (click)="closeModal()" style="cursor: pointer;" src="../../assets/images/Boca.png">
+        </div>
+    
+        <div>
+          <input type="text"  name="nombre" formControlName="nombre" [class.invalid]="editRestForm.get('nombre')?.invalid && editRestForm.get('nombre')?.touched" [placeholder]="!formSubmitted ? 'Nombre: ej. Sushi Bar' : '*Debes introducir un nombre'"/>
+        </div>
+        <div *ngIf="editRestForm.get('nombre')?.touched && editRestForm.get('nombre')?.invalid">
+          <small style="font-size:medium;" id="error" class="text-body-secondary">El nombre es requerido y debe empezar por mayúscula.</small>
+        </div>
+        <div>
+          <input type="text"  name="direccion" formControlName="direccion" [class.invalid]="editRestForm.get('direccion')?.invalid && editRestForm.get('direccion')?.touched" [placeholder]="!formSubmitted ? 'Dirección: ej. C.Mayor, 63' : '*Debes introducir una dirección'"/>
+        </div>
+        <div *ngIf="editRestForm.get('direccion')?.touched && editRestForm.get('direccion')?.invalid">
+          <small style="font-size:medium;" id="error" class="text-body-secondary">La dirección es requerida.</small>
+        </div>
+        <div>
+          <input type="text"  name="poblacion" formControlName="poblacion" [class.invalid]="editRestForm.get('poblacion')?.invalid && editRestForm.get('poblacion')?.touched" [placeholder]="!formSubmitted ? 'Población: ej. Albacete' : '*Debes introducir una población'"/>
+        </div>
+        <div *ngIf="editRestForm.get('poblacion')?.touched && editRestForm.get('poblacion')?.invalid">
+          <small style="font-size:medium;" id="error" class="text-body-secondary">La población es requerida.</small>
+        </div>
+        <div>
+          <input type="text"  name="telefono" formControlName="telefono" [class.invalid]="editRestForm.get('telefono')?.invalid && editRestForm.get('telefono')?.touched" [placeholder]="!formSubmitted ? 'Teléfono: ej. XXX-XXX-XXX' : '*Debes introducir un teléfono'"/>
+        </div>
+        <div *ngIf="editRestForm.get('telefono')?.touched && editRestForm.get('telefono')?.invalid">
+          <small style="font-size:medium;" id="error" class="text-body-secondary">El teléfono es requerido.</small>
+        </div>
+        <div>
+          <input type="text"  name="descripcion_corta" formControlName="descripcion_corta" [class.invalid]="editRestForm.get('descripcion_corta')?.invalid && editRestForm.get('descripcion_corta')?.touched" [placeholder]="!formSubmitted ? 'Descripción corta sobre su restaurante' : '*Debes introducir una descripción'"/>
+        </div>
+        <div *ngIf="editRestForm.get('descripcion_corta')?.touched && editRestForm.get('descripcion_corta')?.invalid">
+          <small style="font-size:medium;" id="error" class="text-body-secondary">Debe introducir una pequeña descripción sobre su restaurante.</small>
+        </div>
+        <div>
+          <input type="text"  name="tipo_comida" formControlName="tipo_comida" [class.invalid]="editRestForm.get('tipo_comida')?.invalid && editRestForm.get('tipo_comida')?.touched" [placeholder]="!formSubmitted ? 'Tipo de comida: ej. Japonesa' : '*Debes introducir un tipo de comida'"/>
+        </div>
+        <div *ngIf="editRestForm.get('tipo_comida')?.touched && editRestForm.get('tipo_comida')?.invalid">
+          <small style="font-size: medium;" id="error" class="text-body-secondary">Este campo es requerido.</small>
+        </div>
+        <div>
+          <input type="text"  name="precio_medio" formControlName="precio_medio" [class.invalid]="editRestForm.get('precio_medio')?.invalid && editRestForm.get('precio_medio')?.touched" [placeholder]="!formSubmitted ? 'Precio medio por persona: ej. 30 €' : '*Debes introducir un precio medio'"/>
+        </div>
+        <div *ngIf="editRestForm.get('precio_medio')?.touched && editRestForm.get('precio_medio')?.invalid">
+          <small style="font-size: medium;" id="error" class="text-body-secondary">Este campo es requerido y solo puede introducir números enteros.</small>
+        </div>
+        <div>
+          <label for="foto_portada">Foto de portada:</label>
+          <input type="file" id="foto_portada" name="foto_portada" (change)="onFileChange($event)" [class.invalid]="editRestForm.get('foto_portada')?.invalid && editRestForm.get('foto_portada')?.touched" accept=".jpg,.png">
+        </div>
+        <div *ngIf="editRestForm.get('foto_portada')?.touched && editRestForm.get('foto_portada')?.invalid">
+          <small style="font-size: medium;" id="error" class="text-body-secondary">Este campo es requerido.</small>
+        </div>
+    
+        <hr class="featurette-divider">
+        <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+          <button type="submit" [disabled]="editRestForm.invalid">Editar restaurante</button>
+        </div>
+    
+      </form>
+</div>

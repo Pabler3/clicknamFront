@@ -1,0 +1,31 @@
+<ng-container>
+	<nav class="navbar navbar-expand-sm fixed-top " aria-label="Barra de navegacion">
+		<div class="container-fluid">
+			<a class="navbar-brand" [href]="usuario && usuario.rol === 'restaurante' ? '/dashboard-restaurante' : '/home'">
+				<img src="../../assets/images/logo-nav.png" style="cursor: pointer;" class="img-fluid" alt="logo-nav">
+			</a>
+
+      <div class="ms-auto">
+				<button type="button" routerLink="/log-in" class="btn" *ngIf="usuario === null">Iniciar Sesión</button>
+
+				<button type="button" class="btn me-2" *ngIf="usuario && usuario.rol === 'cliente'">
+					<i class="bi bi-calendar2-check"></i>
+					<span class="d-none d-md-inline" style="margin-left: 10px;">Mis Reservas</span>
+				</button>
+				<button type="button" (click)="openModal()" class="btn me-2" *ngIf="usuario">
+					<i class="bi bi-person-square"></i>
+					<span class="d-none d-md-inline" style="margin-left: 10px;">Editar Perfil</span>
+				</button>
+				<button type="button" class="btn me-2" *ngIf="usuario && usuario.rol === 'restaurante'">
+					<i class="bi bi-calendar2-check"></i>
+					<span class="d-none d-md-inline" style="margin-left: 10px;">Mis Reservas</span>
+				</button>
+
+				<button type="button" (click)="logout()" class="btn" *ngIf="usuario">
+					<i class="bi bi-box-arrow-right"></i>
+					<span class="d-none d-md-inline" style="margin-left: 10px;">Cerrar Sesión</span>
+				</button>
+			</div>
+		</div>
+	</nav>
+</ng-container>

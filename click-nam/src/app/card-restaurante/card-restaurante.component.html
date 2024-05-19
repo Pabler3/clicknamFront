@@ -1,0 +1,17 @@
+
+        <div class="card shadow-sm p-2">
+            <img [src]="getMediaType(restaurante.foto_portada) + restaurante.foto_portada" class="card-img-top" style="height: 200px;" alt="imagen restaurante">
+            <div class="card-body">
+                <h1 class="card-title">{{ restaurante.nombre }}</h1>
+                <p class="card-text">{{ restaurante.descripcion_corta}}</p>
+                <p class="card-text">{{ restaurante.tipo_comida}}</p>
+                <p class="card-text">{{ restaurante.poblacion}}</p>
+            </div>  
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" (click)="goToDetalle(restaurante)" class="btn mb-3">¡Click Me!</button>
+                </div> 
+                <p class="card-text">Precio medio {{ restaurante.precio_medio }} €  </p>
+            </div>  
+        </div>   
+

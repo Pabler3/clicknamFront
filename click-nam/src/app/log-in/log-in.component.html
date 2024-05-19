@@ -1,0 +1,36 @@
+
+
+<div class="login">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="custom-form">
+    <div class="header">  
+      <h1>Iniciar Sesión</h1>
+      <img src="../../assets/images/Boca.png">
+    </div>
+      <div>
+        <input type="email"  name="email" formControlName="email" [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" [placeholder]="!formSubmitted ? 'Email' : '*Debes introducir un email'" required="required"/>
+      </div>
+      <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">Email es requerido y debe ser válido.</small>
+      </div>
+      <div>
+        <input type="password"  name="password" formControlName="password" [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" [placeholder]="!formSubmitted ? 'Contraseña' : '*Debes introducir una contraseña'" required="required"/>
+      </div>
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        <small style="font-size: medium;" id="error" class="text-body-secondary">La contraseña es requerida y debe ser válida.</small>
+      </div>
+      <hr class="featurette-divider">
+      <div class="ms-auto">
+        <small style="font-size: medium;" class="text-body-secondary">¿No estas registrado?</small>
+        <a type="button" (click)="openModal()" class="btn me-2">
+            <i class="bi bi-card-checklist"></i>
+            <span style="margin-left: 10px;">Regístrate</span>
+        </a>
+      </div>
+      <div class="d-flex flex-column flex-sm-row align-items-center">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-lg mb-2 mb-sm-0 me-sm-2">Iniciar Sesión</button>
+        <button type="button" routerLink="/" class="btn btn-secondary">Cancelar</button>
+      </div>
+      
+    </form>
+</div>
+

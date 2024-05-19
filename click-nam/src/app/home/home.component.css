@@ -1,0 +1,36 @@
+.row-background{
+    background-image: url(../../assets/images/slide-home.png);
+    background-size:cover;
+    background-position: center;
+    height: 400px;
+}
+
+button{
+    background-color:#e6e6e6;
+    
+}
+
+button:hover{
+    border-color: #9eada8;
+}
+
+.form-control, .btn {
+    width: auto; /* Ajusta esto según tus necesidades específicas */
+    
+}
+
+.input-group button {
+    border-left: 0; /* Elimina el borde entre el input y el botón para un look más integrado */
+}
+
+@media (max-width: 820px){
+    .row-background{
+        background-image: url(../../assets/images/slide-home-sm.png);
+        background-size:cover;
+        background-position: center;
+        height: 400px;
+    }
+
+  
+    
+}

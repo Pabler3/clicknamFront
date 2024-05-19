@@ -1,0 +1,24 @@
+button{
+    background-color:#e6e6e6;
+    
+}
+
+button:hover{
+    border-color: #9eada8;
+}
+
+.card {
+    height: 500px; /* Altura fija para todas las tarjetas */
+}
+
+.card-body {
+    overflow: hidden; /* Oculta cualquier contenido que exceda este div */
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita el texto a tres líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

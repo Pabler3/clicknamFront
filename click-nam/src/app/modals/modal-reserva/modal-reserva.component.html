@@ -1,0 +1,19 @@
+<div class="modal-xl">
+    <form [formGroup]="editRestForm" (ngSubmit)="editRest()" class="custom-form">
+        <div class="header">
+          <h1>Confirmar Reserva</h1>
+          <img (click)="closeModal()" style="cursor: pointer;" src="../../assets/images/Boca.png">
+        </div>
+
+        <div>
+          <input type="text" name="usuario" formControlName="nombre" readonly [placeholder]="usuario?.nombre + ' ' + usuario?.apellido"/>
+        </div>
+
+        <hr class="featurette-divider">
+        <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+          <button type="button" class="me-2" (click)="closeModal()">Cancelar</button>
+          <button type="submit">Confirmar Reserva</button>
+        </div>
+
+      </form>
+</div>

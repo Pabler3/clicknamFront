@@ -1,0 +1,127 @@
+
+<div *ngIf="restaurante" class="container mt-5 pt-5">
+    <div class="row">
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center b-example-divider" style="height: 80px;">
+            <h1 class="text-center fs-1 mt-3">{{ restaurante.nombre }}</h1>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <button type="button" (click)="openModal()" class="btn me-2">
+      <i class="bi bi-pencil-square"></i>
+      <span class="d-none d-md-inline" style="margin-left: 10px;">Editar Restaurante</span>
+    </button>
+    <button type="button" (click)="openModalMesa()" class="btn me-2">
+      <i class="bi bi-table"></i>
+      <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Mesa</span>
+    </button>
+    <button type="button" class="btn me-2" routerLink="/alta-restaurante">
+      <i class="bi bi-plus-square"></i>
+      <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Restaurante</span>
+    </button>
+    <hr class="featurette-divider">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-7 px-md-5 text-center text-md-start">
+          <p class="lead"><i class="bi bi-info-square me-2"></i><u>{{ restaurante.nombre }}</u></p>
+          <br>
+          <ul>
+            <p class="lead"><i class="bi bi-menu-up me-2"></i>{{ restaurante.tipo_comida}}</p>
+            <p class="lead"><i class="bi bi-pin-map me-2"></i>{{ restaurante.direccion}}</p>
+            <p class="lead"><i class="bi bi-house me-2"></i>{{ restaurante.poblacion}}</p>
+            <p class="lead"><i class="bi bi-telephone me-2"></i>{{ restaurante.telefono}}</p>
+            <p class="lead"><i class="bi bi-coin me-2"></i>Precio medio: {{ restaurante.precio_medio}} €</p>
+          </ul>
+          <br>
+          <p class="lead">¡No te quedes con las ganas!</p>
+          
+        </div>
+        <!-- Aqui deberia meter por formulario otra foto pequeña -->
+        <div class="col-md-5 d-flex justify-content-center ">
+            <img class="featurette-image img-fluid mx-auto" style="max-width: 300px; max-height: 300px;" [src]="getMediaType(restaurante.foto_portada) + restaurante.foto_portada" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    
+    <div class="jumbotron">
+        <div class="row my-5" style="background-color: #e6e6e6;">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <p class="lead">
+                <i class="bi bi-chat-quote me-2"></i>{{ restaurante.descripcion_corta}}
+            </p>
+            </div>
+        </div>
+    </div> 
+    <!-- Aqui deberiamos pintar las mesas o como se vaya a reservar   -->
+    
+      <div class="row justify-content-between"> 
+        <div *ngFor="let mesa of mesas" class="col-sm-12 col-md-6 col-lg-2 p-2">
+            <app-card-mesa [mesa]="mesa" class="d-flex align-items-center justify-content-center"></app-card-mesa>
+        </div>
+      </div>
+</div>
+<div *ngIf="!restaurante" class="container mt-5 pt-5">
+    <div class="container px-4 py-5" style="background-color: #e6e6e6;" id="hanging-icons">
+        <h1 class="featurette-heading fs-2 lh-1 mb-3">Bienvenido {{usuario?.nombre}},</h1>
+        <p class="lead">Todavía nos has registrado tú restaurante, ¡date prisa!</p>
+        <hr class="featurette-divider">
+        <button type="button" class="btn me-2" style="background-color: #ffffff;" routerLink="/alta-restaurante">
+					<i class="bi bi-plus-square"></i>
+					<span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Restaurante</span>
+				</button>
+        <hr class="featurette-divider">
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                </svg>
+            </div>
+            <div>
+              <h3 class="fs-3 text-body-emphasis">Más visibilidad</h3>
+              <p>Aumenta la visibilidad de tu restaurante y atrae más clientes. Nuestra plataforma promueve tu negocio para que no pases desapercibido.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-clipboard-data"  viewBox="0 0 16 16">
+                    <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z"/>
+                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                </svg>
+            </div>
+            <div>
+              <h3 class="fs-3 text-body-emphasis">Gestión simplificada</h3>
+              <p>Simplifica la administración de tu restaurante con nuestras herramientas integradas. Gestiona reservas, mesas, horarios, todo en un solo lugar.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                    <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
+                </svg>
+            </div>
+            <div>
+              <h3 class="fs-3 text-body-emphasis">Aumenta tús ingresos</h3>
+              <p> Maximiza el potencial de tu restaurante al alcanzar a más clientes cada día. Nuestra plataforma te ayuda a aumentar tus ventas al conectarte con una audiencia más amplia.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
+                    <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0M4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                </svg>
+            </div>
+            <div>
+              <h3 class="fs-3 text-body-emphasis">Hazlo gratis</h3>
+              <p>Únete a nuestra comunidad sin ningún costo. Registrarse es 100% gratuito, sin tarifas ocultas. Invierte en tu negocio, no en comisiones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+    

@@ -1,0 +1,43 @@
+<div class="login">
+    <form [formGroup]="updateForm" class="custom-form">
+    <div class="header">  
+      <h1>Datos personales</h1>
+    </div>
+      <div>
+        <input type="text"  name="nombre" formControlName="nombre" [class.invalid]="updateForm.get('nombre')?.invalid && updateForm.get('nombre')?.touched" [placeholder]="!formSubmitted ? 'Nombre' : '*Debes introducir un nombre'"/>
+      </div>
+      <div *ngIf="updateForm.get('nombre')?.touched && updateForm.get('nombre')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">El nombre es requerido y debe empezar por mayúscula.</small>
+      </div>
+      <div>
+        <input type="text"  name="apellido" formControlName="apellido" [class.invalid]="updateForm.get('apellido')?.invalid && updateForm.get('apellido')?.touched" [placeholder]="!formSubmitted ? 'Apellidos' : '*Debes introducir los apellidos'"/>
+      </div>
+      <div *ngIf="updateForm.get('apellido')?.touched && updateForm.get('apellido')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">Los apellidos son requeridos y deben empezar por mayúscula.</small>
+      </div>
+      <div>
+        <input type="text"  name="telefono" formControlName="telefono" [class.invalid]="updateForm.get('telefono')?.invalid && updateForm.get('telefono')?.touched" [placeholder]="!formSubmitted ? 'Teléfono' : '*Debes introducir un teléfono'"/>
+      </div>
+      <div *ngIf="updateForm.get('telefono')?.touched && updateForm.get('telefono')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">El teléfono es requerido.</small>
+      </div>
+      <div>
+        <input type="email"  name="email" formControlName="email" [class.invalid]="updateForm.get('email')?.invalid && updateForm.get('email')?.touched" [placeholder]="!formSubmitted ? 'Email' : '*Debes introducir un email'"/>
+      </div>
+      <div *ngIf="updateForm.get('email')?.touched && updateForm.get('email')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary" *ngIf="updateForm.get('email')?.errors?.['required'] || updateForm.get('email')?.errors?.['email']">Email es requerido y debe ser válido.</small>
+        <small style="font-size:medium;" id="emailInUse" class="text-body-secondary" *ngIf="updateForm.get('email')?.hasError('emailInUse')">Este correo ya está en uso.</small>
+      </div>
+      <div>
+        <!--Se introduce rol por defecto cliente-->
+        <input type="hidden"  name="rol" formControlName="rol"/>
+      </div>
+      <hr class="featurette-divider">
+      <div class="d-flex flex-column flex-sm-row align-items-center">
+        <button type="submit" (click)="updateUser()" [disabled]="updateForm.invalid" class="btn btn-primary btn-lg mb-2 mb-sm-0 me-sm-2">Actualizar</button>
+        <button type="button" (click)="closeModal()" class="btn btn-secondary btn-lg mb-2 mb-sm-0 me-sm-2">Cancelar</button>
+      </div>
+      
+    </form>
+</div>
+

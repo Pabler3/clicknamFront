@@ -1,0 +1,11 @@
+.navbar{
+    background-color: #9eada8;
+}
+
+button{
+    background-color: #e6e6e6;
+}
+
+button:hover{
+    background-color: #ffffff ;
+}

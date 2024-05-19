@@ -1,0 +1,96 @@
+
+    <div class="container mt-5 pt-5">
+        <div class="row row-background"> 
+          <form class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-center align-items-start mt-3">
+            <div class="p-2">
+              <div class="input-group">
+                <input class="form-control" ngbDatepicker #dp="ngbDatepicker" placeholder="Selecciona día" name="date" [(ngModel)]="date" autocomplete="off"/>
+                <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><i class="bi bi-calendar3"></i></button>
+              </div>
+            </div>
+            <div class="p-2">
+              <input type="time" class="form-control" name="hora" [(ngModel)]="hora"/>
+            </div>
+            <div class="p-2">
+              <div class="input-group"> 
+                <input type="number" class="form-control" name="comensales" placeholder="NºPersonas" min="0" [(ngModel)]="capacidad">
+                <button class="btn btn-outline-secondary"  type="button"><i class="bi bi-person"></i></button>
+              </div> 
+            </div>
+            <div class="p-2">
+              <input type="text" class="form-control" placeholder="Localidad..." name="ciudad" [(ngModel)]="ciudad"/>
+            </div>
+            <div class="p-2">
+              <button type="submit" class="btn btn-light" (click)="submitForm()">Enviar</button>
+            </div>
+          </form>
+        </div>
+  
+        <hr class="featurette-divider">
+      <!-- Restaurantes mas recientes -->
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="featurette-heading fw-normal lh-1 mb-3">Restaurantes más recientes:</h1>
+          </div>
+        </div>
+        <div class="row"> 
+        <div *ngFor="let rest of restaurante|slice:-3" class="col-sm-12 col-md-12 col-lg-4 mt-3">
+            <app-card-restaurante [restaurante]="rest"></app-card-restaurante>
+        </div>
+        </div>
+      </div>
+  
+      <hr class="featurette-divider">
+  
+      <div class="row info">
+        <div class="col-md-7 order-md-2">
+          <h1 class="featurette-heading fw-normal lh-1 mb-3">¿Eres propietario de un restaurante?<span class="text-muted"></span></h1>
+          <h4 class="featurette-heading fw-normal lh-1">Únete a Click & Ñam y haz crecer tu negocio.</h4>
+          <br>
+          <p class="lead">Registra tu restaurante con nosotros y descubre un mundo de oportunidades. Conéctate con más clientes, llena tus mesas
+            más fácilmente y gestiona tus reservas de una manera eficaz.
+          </p>
+          <p class="lead">Beneficios de asociarte con nosotros:</p>
+          <ul>
+            <li>Visibilidad aumentada</li>
+            <li>Marketing dirigido</li>
+            <li>Gestión simplificada</li>
+            <li>Soporte dedicado</li>
+          </ul>
+          <br>
+          <p class="lead">¡Regístrate ahora y lleva tu restaurante al siguiente nivel!</p>
+          <button type="button" routerLink="/registro-restaurante" class="btn mb-3">Regístrate</button>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="../../assets/images/home_slide2.png" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+        </div>
+      </div>
+  
+      <hr class="featurette-divider">
+  
+      <div class="row info">
+        <div class="col-md-7">
+            <h1 class="featurette-heading fw-normal lh-1 mb-3">Haz tu reserva en un "Click"<span class="text-muted"></span></h1>
+            <h4 class="featurette-heading fw-normal lh-1">Descubre, reserva, disfruta. Es así de simple con Click & Ñam.</h4>
+            <br>
+          <p class="lead">Elegir el restaurante adecuado no debería ser lo más complicado de tu día. Nosotros te conectamos en cuestión de minutos.</p>
+          <p class="lead">¿Por qué elegirnos? Aquí te lo contamos:</p>
+          <ul>
+            <li>Diversidad a un toque</li>
+            <li>Beneficios únicos</li>
+            <li>Flexibilidad total</li>
+            <li>Confirmación al instante</li>
+          </ul>
+          <br>
+          <p class="lead">Estamos comprometidos contigo, con hacerte vivir momentos deliciosos sin complicaciones.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="../../assets/images/home_slide3.png" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+        </div>
+      </div>
+  
+      <hr class="featurette-divider">
+  
+    </div><!-- /.container -->
+  

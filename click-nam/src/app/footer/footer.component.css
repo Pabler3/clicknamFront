@@ -1,0 +1,7 @@
+.container-fluid{
+    background-color:#e6e6e6;
+}
+
+.nav.border-bottom {
+    border-bottom: 3px solid #ffffff !important; /* Ajusta el color y el grosor según necesites */
+}

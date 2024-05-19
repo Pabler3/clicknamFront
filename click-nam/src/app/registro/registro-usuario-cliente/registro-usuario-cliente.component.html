@@ -1,0 +1,55 @@
+<div class="login">
+    <form [formGroup]="registerForm" (ngSubmit)="registroClient()" class="custom-form">
+    <div class="header">  
+      <h1>Registro Cliente</h1>
+      <img src="../../assets/images/Boca.png">
+    </div>
+      <div>
+        <input type="text"  name="nombre" formControlName="nombre" [class.invalid]="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" [placeholder]="!formSubmitted ? 'Nombre' : '*Debes introducir un nombre'"/>
+      </div>
+      <div *ngIf="registerForm.get('nombre')?.touched && registerForm.get('nombre')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">El nombre es requerido y debe empezar por mayúscula.</small>
+      </div>
+      <div>
+        <input type="text"  name="apellido" formControlName="apellido" [class.invalid]="registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched" [placeholder]="!formSubmitted ? 'Apellidos' : '*Debes introducir los apellidos'"/>
+      </div>
+      <div *ngIf="registerForm.get('apellido')?.touched && registerForm.get('apellido')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">Los apellidos son requeridos y deben empezar por mayúscula.</small>
+      </div>
+      <div>
+        <input type="text"  name="telefono" formControlName="telefono" [class.invalid]="registerForm.get('telefono')?.invalid && registerForm.get('telefono')?.touched" [placeholder]="!formSubmitted ? 'Teléfono' : '*Debes introducir un teléfono'"/>
+      </div>
+      <div *ngIf="registerForm.get('telefono')?.touched && registerForm.get('telefono')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">El teléfono es requerido.</small>
+      </div>
+      <div>
+        <input type="email"  name="email" formControlName="email" [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" [placeholder]="!formSubmitted ? 'Email' : '*Debes introducir un email'"/>
+      </div>
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        <small style="font-size:medium;" id="error" class="text-body-secondary">Email es requerido y debe ser válido.</small>
+      </div>
+      <div>
+        <input type="password"  name="password" formControlName="password" [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" [placeholder]="!formSubmitted ? 'Contraseña' : '*Debes introducir una contraseña'"/>
+      </div>
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        <small style="font-size: medium;" id="error" class="text-body-secondary">La contraseña es requerida y debe contener mayúsculas, minúsculas y números.</small>
+      </div>
+      <div>
+        <!--Se introduce rol por defecto cliente-->
+        <input type="hidden"  name="rol" formControlName="rol" value="cliente"/>
+      </div>
+      <hr class="featurette-divider">
+      <div class="ms-auto">
+        <small style="font-size: medium;" class="text-body-secondary">¿Ya estas registrado?</small>
+        <a type="button" routerLink="/log-in" class="btn me-2">
+            <i class="bi bi-card-checklist"></i>
+            <span style="margin-left: 10px;">Inicia Sesión</span>
+        </a>
+      </div>
+      <div class="d-flex flex-column flex-sm-row align-items-center">
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-lg mb-2 mb-sm-0 me-sm-2">Regístrate</button>
+        <button type="button" routerLink="/" class="btn btn-secondary">Cancelar</button>
+      </div>
+      
+    </form>
+</div>

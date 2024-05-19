@@ -1,0 +1,41 @@
+<div class="container mt-5 pt-5">
+    <div class="row g-3"> 
+        <div class="row d-flex justify-content-center align-items-center mt-5">
+            <div class="d-flex justify-content-center align-items-center b-example-divider" style="height: 80px;">
+                <h1 class="text-center fs-1 mt-3">Restaurantes disponibles</h1>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="d-flex justify-content-centar align-items-center">   
+        <p class="lead"><i class="bi bi-emoji-sunglasses me-2"></i>Estabamos seguros de que no te ibas a quedar sin comer, ahora ya depende de tí | Si quieres realizar otra búsqueda</p>
+        <button type="button" (click)="goBack()" class="btn ms-3">¡Click Me!</button>
+        </div>
+        
+        <hr class="featurette-divider">
+        <div *ngFor="let rest of restaurante" class="col-sm-12 col-md-6 col-lg-3"> 
+            <section class="mx-auto my-5" style="max-width: 20rem;">
+                <div class="card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img [src]="getMediaType(rest.foto_portada) + rest.foto_portada" class="img-fluid card-img-top" />
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold"><a>{{rest.nombre}}</a></h4>
+                        <p class="mb-2">Precio medio {{rest.precio_medio}}€ · {{rest.tipo_comida}}</p>
+                        <p class="mb-2"></p>
+                        <p class="mb-2">{{rest.direccion}}, {{rest.poblacion}}</p>
+                        <p class="card-text">
+                           {{rest.descripcion_corta}}
+                        </p>
+                        <hr class="my-4" />
+                        <div class="d-flex justify-content-center">
+                            <button type="button" (click)="openModalReserva()" class="btn me-2">
+                                <i class="bi bi-clipboard-plus"></i>
+                                <span class="d-none d-md-inline" style="margin-left: 10px;">Reservar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+
+  .card-text {
+    color: gray;
+  }
+  
+  .card {
+    transition: all 0.5s;
+  }
+  
+  .card:hover {
+    background-color: #9eada8;;
+    color: #ffffff;
+  }
+  
+  .card:hover .icon,
+  .card:hover .card-text {
+    color: #ffffff;
+  }
+
+  .card-header .icon {
+    display: flex;
+    align-items: center;
+    font-size: 24px; 
+    color: #9eada8;
+}
+
+.card-header .card-title {
+    font-size: 1.25rem; 
+}
