@@ -2,35 +2,42 @@
     <form [formGroup]="altaMesasForm" class="custom-form">
         <div class="header">
           <h1>Registrar Mesa</h1>
+          <img (click)="closeModal()" style="cursor: pointer;" src="../../assets/images/Boca.png">
         </div>
         <div>
           <input type="text"  name="nombreMesa" formControlName="nombreMesa" [class.invalid]="altaMesasForm.get('nombreMesa')?.invalid && altaMesasForm.get('nombreMesa')?.touched" [placeholder]="!formSubmitted ? 'Nombre mesa: ej. Mesa 1' : '*Debes introducir un nombre de mesa'"/>
         </div>
-        <div *ngIf="altaMesasForm.get('nombreMesa')?.touched && altaMesasForm.get('nombreMesa')?.invalid">
+        <div *ngIf="altaMesasForm.get('nombreMesa')?.touched && altaMesasForm.get('nombreMesa')?.invalid && formSubmitted">
           <small style="font-size:medium;" id="error" class="text-body-secondary">El nombre de mesa es requerido y debe empezar por mayúscula.</small>
         </div>
         <div>
           <input type="text"  name="infoMesa" formControlName="infoMesa" [class.invalid]="altaMesasForm.get('infoMesa')?.invalid && altaMesasForm.get('infoMesa')?.touched" [placeholder]="!formSubmitted ? 'Información mesa: ej. Terraza' : '*Debes introducir informacion para la mesa'"/>
         </div>
-        <div *ngIf="altaMesasForm.get('infoMesa')?.touched && altaMesasForm.get('infoMesa')?.invalid">
+        <div *ngIf="altaMesasForm.get('infoMesa')?.touched && altaMesasForm.get('infoMesa')?.invalid && formSubmitted">
           <small style="font-size:medium;" id="error" class="text-body-secondary">La información de mesa es requerida y debe empezar por mayúscula.</small>
         </div>
         <div>
           <input type="number"  name="capacidad" formControlName="capacidad" [class.invalid]="altaMesasForm.get('capacidad')?.invalid && altaMesasForm.get('capacidad')?.touched" [placeholder]="!formSubmitted ? 'Nº personas max: ej. 6 personas' : '*Debes introducir una capacidad max de mesa'"/>
         </div>
-        <div *ngIf="altaMesasForm.get('capacidad')?.touched && altaMesasForm.get('capacidad')?.invalid">
+        <div *ngIf="altaMesasForm.get('capacidad')?.touched && altaMesasForm.get('capacidad')?.invalid && formSubmitted">
           <small style="font-size:medium;" id="error" class="text-body-secondary">Nº max de personas es requerido.</small>
         </div>
         <div>
             <input type="number"  name="horaMaxima" formControlName="horaMaxima" [class.invalid]="altaMesasForm.get('horaMaxima')?.invalid && altaMesasForm.get('horaMaxima')?.touched" [placeholder]="!formSubmitted ? 'Tiempo max servicio de mesa: ej. 2 horas' : '*Debes introducir un tiempo máximo de servicio para la mesa'"/>
           </div>
-          <div *ngIf="altaMesasForm.get('horaMaxima')?.touched && altaMesasForm.get('horaMaxima')?.invalid">
+          <div *ngIf="altaMesasForm.get('horaMaxima')?.touched && altaMesasForm.get('horaMaxima')?.invalid && formSubmitted">
             <small style="font-size:medium;" id="error" class="text-body-secondary">Debes introducir un tiempo màximo de servicio.</small>
           </div>
         <hr class="featurette-divider">
         <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
-            <button type="submit" (click)="altaMesa()" [disabled]="altaMesasForm.invalid" class="btn btn-lg mb-2 mb-sm-0 me-sm-2">Actualizar</button>
-            <button type="button" (click)="closeModal()" class="btn btn-lg mb-2 mb-sm-0 me-sm-2">Cancelar</button>
-        </div>
+          @if (actualizar) {
+            <button type="submit" (click)="actualizarMesa()" [disabled]="altaMesasForm.invalid" class="btn btn-lg mb-2 mb-sm-0 me-sm-2">Actualizar</button>
+          }@else {
+            <button type="submit" (click)="altaMesa()" [disabled]="altaMesasForm.invalid" class="btn btn-lg mb-2 mb-sm-0 me-sm-2">Guardar</button>
+          }           
+          <button type="button" (click)="closeModal()" class="btn btn-lg mb-2 mb-sm-0 me-sm-2">Cancelar</button>
+      </div>
       </form>
+     
+
 </div>

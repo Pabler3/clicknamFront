@@ -16,8 +16,15 @@ export class MesasService {
   registerMesa(mesa: Mesa): Observable<Mesa> {
     return this.http.post<Mesa>(`${ENVIRONMENT.databaseUrl}/mesas`,mesa);
   }
-
-  // Servicio para obtener un restaurante por ID
+  // Servicio para actualizar mesas
+  actualizarMesa(mesa:Mesa):Observable<Mesa>{
+    return this.http.put<Mesa>(`${ENVIRONMENT.databaseUrl}/mesas`,mesa);
+  }
+  // Servicio para borrar mesas
+  borrarMesa(mesa:Mesa){
+    return this.http.put<Mesa>(`${ENVIRONMENT.databaseUrl}/mesas/mesa`,mesa);
+  }
+  // Servicio para obtener mesas de un restaurante por ID
   getMesasByRestauranteId(id: any): Observable<Mesa[]> {
     return this.http.get<Mesa[]>(`${ENVIRONMENT.databaseUrl}/mesas/restaurante/${id}`).pipe(
       map((response: Mesa[]) => {

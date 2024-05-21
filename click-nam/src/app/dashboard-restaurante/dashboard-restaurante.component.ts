@@ -112,6 +112,8 @@ export class DashboardRestauranteComponent implements OnInit {
         } 
       })
     }
-
+    onMesaBorrada(){
+      this.getMesasByRestauranteId(this.restaurante?.id);
+    }
 
 }

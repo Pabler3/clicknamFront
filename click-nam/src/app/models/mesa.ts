@@ -11,5 +11,6 @@ export interface Mesa{
     horaMaxima: number;
     restaurante: Restaurante;
     reserva?: Reserva[];
+    activa:boolean;
 
 }

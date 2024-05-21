@@ -1,0 +1,9 @@
+button{
+    background-color:#e6e6e6;
+    
+}
+
+button:hover{
+    border-color: #9eada8;
+    cursor: pointer;
+}

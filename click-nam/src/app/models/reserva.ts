@@ -4,7 +4,9 @@ import { Usuario } from "./usuario";
 export interface Reserva {
     id: number;
     horaFin: string;
-    dia: string;
+    dia: number;
+    mes: number;
+    ano: number;
     horaInicio: string;
     usuario: Usuario;
     mesa: Mesa;

@@ -2,7 +2,7 @@
 h1 {
   margin: 0;
   padding: 0;
-  text-align: center;
+ 
 }
 .modal-content {
   background: rgba(255, 255, 255, 0.15);
@@ -10,6 +10,7 @@ h1 {
   border-radius: 2.5rem;
   background-color: #ecf0f3;
   color: black;
+
 }
 .custom-form input {
   display: block;
@@ -70,9 +71,16 @@ h1 {
 
 }
 
-img{
-  width: 50px;
-  height: 50px;
+
+.header {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+  justify-content: space-between; /* Separa el h1 y la img, empujando la img a la derecha */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
 }
 
+.header img {
+  height: 60px; /* Ajusta la altura según tus necesidades */
+  width: auto; /* Mantiene la proporción de la imagen */
+}
 
