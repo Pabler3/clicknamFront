@@ -1,9 +1,19 @@
-button{
-    background-color:#e6e6e6;
-    
+#button{
+    background-color: #e6e6e6;
+    width: 100px;
 }
 
-button:hover{
+#button:hover{
+    background-color: #ffffff ;
     border-color: #9eada8;
-    cursor: pointer;
+}
+
+
+.modal-content {
+    border-radius: 2.5rem;
+    background-color: #ecf0f3;
+    /* box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff; */
+    color: black;
+    border: none;
+    padding: 5px;
 }

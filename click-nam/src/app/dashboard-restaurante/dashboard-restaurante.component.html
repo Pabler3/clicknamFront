@@ -1,67 +1,107 @@
 
 <div *ngIf="restaurante" class="container mt-5 pt-5">
-    <div class="row">
-    </div>
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="d-flex justify-content-center align-items-center b-example-divider" style="height: 80px;">
-            <h1 class="text-center fs-1 mt-3">{{ restaurante.nombre }}</h1>
-        </div>
-    </div>
-    <hr class="featurette-divider">
-    <button type="button" (click)="openModal()" class="btn me-2">
-      <i class="bi bi-pencil-square"></i>
-      <span class="d-none d-md-inline" style="margin-left: 10px;">Editar Restaurante</span>
-    </button>
-    <button type="button" (click)="openModalMesa()" class="btn me-2">
-      <i class="bi bi-table"></i>
-      <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Mesa</span>
-    </button>
-    <!-- <button type="button" class="btn me-2" routerLink="/alta-restaurante">
-      <i class="bi bi-plus-square"></i>
-      <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Restaurante</span>
-    </button> -->
-    <hr class="featurette-divider">
-    <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-7 px-md-5 text-center text-md-start">
-          <p class="lead"><i class="bi bi-info-square me-2"></i><u>{{ restaurante.nombre }}</u></p>
-          <br>
-          <ul>
-            <p class="lead"><i class="bi bi-menu-up me-2"></i>{{ restaurante.tipo_comida}}</p>
-            <p class="lead"><i class="bi bi-pin-map me-2"></i>{{ restaurante.direccion}}</p>
-            <p class="lead"><i class="bi bi-house me-2"></i>{{ restaurante.poblacion}}</p>
-            <p class="lead"><i class="bi bi-telephone me-2"></i>{{ restaurante.telefono}}</p>
-            <p class="lead"><i class="bi bi-coin me-2"></i>Precio medio: {{ restaurante.precio_medio}} €</p>
-          </ul>
-          <br>
-          <p class="lead">¡No te quedes con las ganas!</p>
-          
-        </div>
-        <!-- Aqui deberia meter por formulario otra foto pequeña -->
-        <div class="col-md-5 d-flex justify-content-center ">
-            <img class="featurette-image img-fluid mx-auto" style="max-width: 300px; max-height: 300px;" [src]="getMediaType(restaurante.foto_portada) + restaurante.foto_portada" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-        </div>
-    </div>
-    <hr class="featurette-divider">
-    
-    <div class="jumbotron">
-        <div class="row my-5" style="background-color: #e6e6e6;">
-            <div class="p-5 text-center bg-body-tertiary rounded-3">
-            <p class="lead">
-                <i class="bi bi-chat-quote me-2"></i>{{ restaurante.descripcion_corta}}
-            </p>
+      <div class="row d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center b-example-divider" style="height: 80px;">
+              <h1 class="text-center fs-1 mt-3">{{ restaurante.nombre }}</h1>
+          </div>
+      </div>
+      <hr class="featurette-divider">
+      <button type="button" (click)="openModal()" class="btn me-2">
+        <i class="bi bi-pencil-square"></i>
+        <span class="d-none d-md-inline" style="margin-left: 10px;">Editar Restaurante</span>
+      </button>
+      <button type="button" (click)="openModalMesa()" class="btn me-2">
+        <i class="bi bi-table"></i>
+        <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Mesa</span>
+      </button>
+      <!-- <button type="button" class="btn me-2" routerLink="/alta-restaurante">
+        <i class="bi bi-plus-square"></i>
+        <span class="d-none d-md-inline" style="margin-left: 10px;">Añadir Restaurante</span>
+      </button> -->
+      <hr class="featurette-divider">
+      
+      <div class="row d-flex align-items-center justify-content-center">
+          <div class="col-md-7 px-md-5 text-center text-md-start">
+            <p class="lead"><i class="bi bi-info-square me-2"></i><u>{{ restaurante.nombre }}</u></p>
+            <br>
+            <ul>
+              <p class="lead"><i class="bi bi-menu-up me-2"></i>{{ restaurante.tipo_comida}}</p>
+              <p class="lead"><i class="bi bi-pin-map me-2"></i>{{ restaurante.direccion}}</p>
+              <p class="lead"><i class="bi bi-house me-2"></i>{{ restaurante.poblacion}}</p>
+              <p class="lead"><i class="bi bi-telephone me-2"></i>{{ restaurante.telefono}}</p>
+              <p class="lead"><i class="bi bi-coin me-2"></i>Precio medio: {{ restaurante.precio_medio}} €</p>
+            </ul>
+            <br>
+            <p class="lead">¡No te quedes con las ganas!</p>
+            
+          </div>
+          <!-- Aqui deberia meter por formulario otra foto pequeña -->
+          <div class="col-md-5 d-flex justify-content-center ">
+              <img class="featurette-image img-fluid mx-auto" style="max-width: 300px; max-height: 300px;" [src]="getMediaType(restaurante.foto_portada) + restaurante.foto_portada" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          </div>
+      </div>
+      <hr class="featurette-divider">
+      
+      <div class="jumbotron">
+          <div class="row my-5" style="background-color: #e6e6e6;">
+              <div class="p-5 text-center bg-body-tertiary rounded-3">
+              <p class="lead">
+                  <i class="bi bi-chat-quote me-2"></i>{{ restaurante.descripcion_corta}}
+              </p>
+              </div>
+          </div>
+      </div> 
+      <!-- Aqui deberiamos pintar las mesas o como se vaya a reservar   -->
+      <!-- Envoltura condicional para verificar si hay mesas, revisando que mesas sea un array y tenga elementos -->
+      <ng-container *ngIf="mesas && mesas.length > 0">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center b-example-divider mb-3" style="height: 40px;">
+                <h4 class="text-center fs-4 mt-3">Nuestras mesas</h4>
             </div>
         </div>
-    </div> 
-    <!-- Aqui deberiamos pintar las mesas o como se vaya a reservar   -->
+        <div class="row justify-content-between"> 
+            <div *ngFor="let mesa of mesas" class="col-sm-12 col-md-6 col-lg-2 p-2">
+                <app-card-mesa [mesa]="mesa" (mesaBorrada)="onMesaBorrada()" class="d-flex align-items-center justify-content-center"></app-card-mesa>
+            </div>
+        </div>
+      </ng-container>
+
+      <!-- Aqui deberiamos pintar las reservas que tiene un restaurante -->
     
-      <div class="row justify-content-between"> 
-        <div *ngFor="let mesa of mesas" class="col-sm-12 col-md-6 col-lg-2 p-2">
-            <app-card-mesa [mesa]="mesa" (mesaBorrada)="onMesaBorrada()" class="d-flex align-items-center justify-content-center"></app-card-mesa>
+    <div *ngIf="reserva">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center b-example-divider mt-3" style="height: 40px;">
+            <h4 class="text-center fs-4 mt-3">Nuestras reservas</h4>
         </div>
       </div>
+      <div class="container mt-3 pt-3">
+        <table class="table table-striped text-center">
+          <thead>
+              <tr style="background-color: #9eada8;" class="lead">
+                  <th scope="col">Id Reserva</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Hora</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Sitio</th>
+                  <th scope="col">Zona</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor=" let reser of reserva">
+                <td class="lead"> {{ reser.id }}</td>
+                <td class="lead"> {{ reser.usuario.nombre }}</td>
+                <td class="lead">{{reser.horaInicio}}</td>
+                <td class="lead">{{ reser.dia }}/{{reser.mes}}/{{reser.ano}}</td>
+                <td class="lead">{{reser.mesa.nombreMesa}}</td>
+                <td class="lead">{{reser.mesa.infoMesa}}</td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
 </div>
-<div *ngIf="!restaurante" class="container mt-5 pt-5">
-    <div class="container px-4 py-5" style="background-color: #e6e6e6;" id="hanging-icons">
+<div class="container mt-5 pt-5">
+    <div *ngIf="!restaurante" class="container px-4 py-5" style="background-color: #e6e6e6;" id="hanging-icons">
         <h1 class="featurette-heading fs-2 lh-1 mb-3">Bienvenido {{usuario?.nombre}},</h1>
         <p class="lead">Todavía nos has registrado tú restaurante, ¡date prisa!</p>
         <hr class="featurette-divider">

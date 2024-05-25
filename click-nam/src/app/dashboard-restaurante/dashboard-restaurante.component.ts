@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { AuthLoginService } from '../services/auth-login.service';
 import { Restaurante } from '../models/restaurante';
@@ -11,6 +11,8 @@ import { MesaComponent } from '../mesa/mesa.component';
 import { CardMesaComponent } from "../card-mesa/card-mesa.component";
 import { Mesa } from '../models/mesa';
 import { MesasService } from '../services/mesas.service';
+import { ReservaService } from '../services/reserva.service';
+import { Reserva } from '../models/reserva';
 
 
 @Component({
@@ -26,30 +28,37 @@ export class DashboardRestauranteComponent implements OnInit {
   usuario?: Usuario | null;
   restaurante?: Restaurante;
   mesas: Mesa[] = [];
+  reserva?: Reserva[];
   
   constructor(
     private authSrv: AuthLoginService,
     private restauranteService : RestauranteService,
     private router: Router,
     private modalService: NgbModal,
-    private mesaService: MesasService
+    private mesaService: MesasService,
+    private reservaService: ReservaService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.usuario = this.authSrv.currentUserValue;
     if(this.usuario) {
       this.getRestauranteByUserId(this.usuario.id)
+      
     } else {
       this.router.navigate(['/log-in']);
     } 
+    
   }
 
     // Llamamos al servicio para obtener el restaurante de un usuario por su ID
     getRestauranteByUserId(id: any): void {
-      this.restauranteService.getRestauranteByUserId(id).subscribe({
+      this.restauranteService.getRestauranteByUserId(id)
+      .subscribe({
         next: (response) => {
           if(response.length > 0){
             this.restaurante = response[0];
+            this.getReservasRestaurante(this.restaurante!.id)
             this.getMesasByRestauranteId(this.restaurante?.id)
           }  
         },
@@ -112,8 +121,26 @@ export class DashboardRestauranteComponent implements OnInit {
         } 
       })
     }
+
+    //borrar mesa
     onMesaBorrada(){
       this.getMesasByRestauranteId(this.restaurante?.id);
+    }
+
+    // Llamamos al servicio para obtener las reservas de un restaurante por su ID
+    getReservasRestaurante(id: any): void {
+      this.reservaService.getReservasByRestauranteId(id).subscribe({
+        next: (response) => {
+          if(response.length > 0){
+            this.reserva = response;
+            this.cdr.detectChanges();
+          }  
+        },
+        error: (error) => {
+          console.error('Error al cargar las reservas:', error);
+          this.cdr.detectChanges();
+        }
+      });
     }
 
 }

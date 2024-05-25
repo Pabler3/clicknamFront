@@ -1,10 +1,9 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Restaurante } from '../../models/restaurante';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { RestauranteService } from '../../services/restaurante.service';
 import { AuthLoginService } from '../../services/auth-login.service';
 import { Usuario } from '../../models/usuario';
 import { Busqueda } from '../../models/busqueda';
@@ -40,6 +39,7 @@ export class ModalReservaComponent implements OnInit {
     this.authLoginService.currentUser.subscribe(user => {
       this.usuario = user;
     })
+
     this.getReservaPrevia();
 }
   //metodo para cerrar el modal

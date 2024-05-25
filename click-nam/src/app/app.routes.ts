@@ -7,6 +7,7 @@ import { RegistroRestauranteComponent } from './registro/registro-restaurante/re
 import { RestauranteDetalleComponent } from './restaurante-detalle/restaurante-detalle.component';
 import { DashboardRestauranteComponent } from './dashboard-restaurante/dashboard-restaurante.component';
 import { RestaurantesFiltradosComponent } from './restaurantes-filtrados/restaurantes-filtrados.component';
+import { ListaReservasComponent } from './lista-reservas/lista-reservas.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'home-restaurante', component: RestauranteDetalleComponent},
     { path: 'home-restaurante/:id', component: RestauranteDetalleComponent},
     { path: 'dashboard-restaurante', component: DashboardRestauranteComponent},
-    { path: 'restaurantes-filtrados', component: RestaurantesFiltradosComponent}
+    { path: 'restaurantes-filtrados', component: RestaurantesFiltradosComponent},
+    { path: 'lista-reservas', component: ListaReservasComponent}
 ];

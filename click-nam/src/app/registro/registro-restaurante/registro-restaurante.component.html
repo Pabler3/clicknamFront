@@ -50,10 +50,10 @@
     </div>
     <div>
       <label for="foto_portada">Foto de portada:</label>
-      <input type="file" id="foto_portada" name="foto_portada" (change)="onFileChange($event)" [class.invalid]="altaRestForm.get('foto_portada')?.invalid && altaRestForm.get('foto_portada')?.touched" accept=".jpg,.png">
+      <input type="file" id="foto_portada" name="foto_portada" (change)="onFileChange($event)" [class.invalid]="altaRestForm.get('foto_portada')?.invalid && altaRestForm.get('foto_portada')?.touched" accept=".jpg,.png" placement="top" tooltipClass="my-custom-class" ngbTooltip="Se recomienda un tamaño de 1300px x 450px">
     </div>
     <div *ngIf="altaRestForm.get('foto_portada')?.touched && altaRestForm.get('foto_portada')?.invalid">
-      <small style="font-size: medium;" id="error" class="text-body-secondary">Este campo es requerido.</small>
+      <small style="font-size: medium;" id="error" class="text-body-secondary">Este campo es requerido y debe tener un formato imagen.</small>
     </div>
 
     <hr class="featurette-divider">

@@ -65,10 +65,11 @@ export class RestaurantesFiltradosComponent {
         reserva.usuario = this.usuario;
         this.reservaService.realizarReserva(reserva).subscribe({
           next: (reserva) => {
-            this.openModal('Reserva realizada','La reserva se ha realizado correctamente, gracias por usar nuestros servicios');
+            this.openModal('Reserva realizada','La reserva se ha realizado correctamente, gracias por usar nuestros servicios. En breves recibirá su confirmación por email.');
+            this.router.navigate(['/home']);
           },
           error: () => {
-            this.openModal('Error','Error al realizar la reserva, por favor, vuelva a intentarlo');
+            this.openModal('Error','Error al realizar la reserva, por favor, vuelva a intentarlo.');
           }
         });
       }

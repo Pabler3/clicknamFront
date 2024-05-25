@@ -1,0 +1,26 @@
+i{
+    padding: 5px;
+    cursor: pointer;    
+}
+
+  button{
+    background-color: #e6e6e6;
+  
+}
+
+button:hover{
+    background-color: #ffffff ;
+    border-color: #9eada8;
+  
+}
+
+#button-volver{
+    background-color: #9eada8;
+  
+}
+
+#button-volver:hover{
+    background-color: #ffffff ;
+    border-color: #9eada8;
+  
+}

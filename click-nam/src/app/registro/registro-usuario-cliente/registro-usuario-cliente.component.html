@@ -2,7 +2,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="registroClient()" class="custom-form">
     <div class="header">  
       <h1>Registro Cliente</h1>
-      <img src="../../assets/images/Boca.png">
+      <img (click)="goBack()" style="cursor: pointer;" src="../../assets/images/Boca.png">
     </div>
       <div>
         <input type="text"  name="nombre" formControlName="nombre" [class.invalid]="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" [placeholder]="!formSubmitted ? 'Nombre' : '*Debes introducir un nombre'"/>

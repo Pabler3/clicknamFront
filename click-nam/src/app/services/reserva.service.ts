@@ -34,4 +34,19 @@ export class ReservaService {
   realizarReserva(reserva:Reserva):Observable<Reserva>{
     return this.http.post<Reserva>(`${ENVIRONMENT.databaseUrl}/reservas`,reserva);
   }
+
+  // Servicio para obtener reservas por ID de restaurante
+  getReservasByRestauranteId(id: any): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(`${ENVIRONMENT.databaseUrl}/reservas/restaurante/${id}`);
+  }
+
+  //servicio para devolver una lista de reservas por id de cliente
+  getReservasUsuario(id:number):Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(`${ENVIRONMENT.databaseUrl}/reservas/usuario/${id}`);
+  }
+
+  //servicio para borrar una reserva de un usuario por id
+  deleteReservaUsuario(id:number):Observable<Reserva>{
+    return this.http.delete<Reserva>(`${ENVIRONMENT.databaseUrl}/reservas/${id}`);
+  }
 }

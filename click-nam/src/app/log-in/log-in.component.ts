@@ -50,17 +50,24 @@ export class LogInComponent implements OnInit {
         }, 
         error: error => {
           console.error('Error de autenticación', error);
-          alert('Error de autenticación');
+          this.openModal(true);
         }
       })
     }
   }
 
   //metodo para abrir el modal, le metemos los datos mediante input. Se podrian meter más.
-  openModal(): void {
+  openModal(msg?:boolean): void {
     const modalRef = this.modalService.open(ModalComponent);
-    modalRef.componentInstance.title = 'Registro Usuario';
-    modalRef.componentInstance.content = 'Debes elegir tu forma de registrarte. Si eres dueño de un restaurante y quieres ofertar tu restaurante o si quieres ser un cliente que para poder reservar en ellos.';
+    if(msg){
+      modalRef.componentInstance.title = 'Login erroneo';
+      modalRef.componentInstance.content = 'Ha ocurrido un error durante el proceso de autenticación.';
+      modalRef.componentInstance.msg = msg;
+    }else {
+      modalRef.componentInstance.title = 'Registro Usuario';
+      modalRef.componentInstance.content = 'Debes elegir tu forma de registrarte. Si eres dueño de un restaurante y quieres ofertar tu restaurante o si quieres ser un cliente que para poder reservar en ellos.';
+    }
+    
 
     //result es una promesa que contiene los resultados al cerrar el modal
     modalRef.result.then((result) => {

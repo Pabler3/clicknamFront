@@ -6,12 +6,28 @@
   .card {
     transition: all 0.5s;
   }
-  
+   /* background-color: #9eada8; */
   .card:hover {
-    background-color: #9eada8;;
+   
     color: #ffffff;
+    background: linear-gradient(
+        to top right,
+        #818f8a 20%,
+        #9eada8 40%,
+        #9eada8 60%,
+        #818f8a 80%
+      );
+      background-size: 200% auto;
+      animation: shine 6s linear infinite;
+    }
+    
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
   }
-  
+
+
   .card:hover .icon,
   .card:hover .card-text {
     color: #ffffff;

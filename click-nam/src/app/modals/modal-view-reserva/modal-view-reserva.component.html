@@ -1,0 +1,28 @@
+<div class="modal-content" role="document">
+    <div class="modal-header border-bottom-0">
+      <h1 class="modal-title fs-4"><i class="bi bi-card-text me-2"></i>Detalles de la reserva:</h1>
+      <button type="button" class="btn-close" (click)="this.activeModal.close()"  aria-label="Close"></button>
+    </div>
+    <div class="modal-body py-0">
+      <p class="lead"><i class="bi bi-person-square me-2"></i><u>Hola {{usuario?.nombre}} los datos de tu reserva son:</u></p>
+        <br>
+        <ul *ngIf="datosReserva">
+          <p class="lead"><i class="bi bi-info-square me-2"></i> Restaurante: {{ datosReserva.mesa.restaurante.nombre}}</p>
+          <p class="lead"><i class="bi bi-calendar3 me-2"></i>Dia: {{ datosReserva.dia}}/{{datosReserva.mes}}/{{datosReserva.ano}}</p>
+          <p class="lead"><i class="bi bi-clock me-2"></i>Hora: {{ datosReserva.horaInicio }}</p>
+          <p class="lead"><i class="bi bi-clock-history me-2"></i>La reserva finaliza a las: {{datosReserva.horaFin}}</p>
+          <p class="lead"><i class="bi bi-tablet me-2"></i>Estaras situado en {{datosReserva.mesa.nombreMesa}} que se encuentra en {{datosReserva.mesa.infoMesa}}</p>
+        </ul>
+        <br>
+        <p class="lead">¡Disfruta de tu estancia!</p>
+        <hr class="featurette-divider">
+    </div>
+    <div class="modal-footer align-items-stretch w-100 gap-2 pb-3 border-top-0">
+      <button type="button" id="button" class="btn btn-lg" (click)="activeModal.close()">Aceptar</button>
+    </div>
+  </div>
+  
+  
+  
+  
+  

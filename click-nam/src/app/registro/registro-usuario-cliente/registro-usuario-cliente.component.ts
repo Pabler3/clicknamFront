@@ -57,6 +57,9 @@ export class RegistroUsuarioClienteComponent implements OnInit{
     }
   }
   
+  goBack() {
+    window.history.back();  // Usa el historial del navegador para ir a la página anterior
+  }
 
 
 }

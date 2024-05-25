@@ -5,11 +5,13 @@ import { Router, RouterModule } from '@angular/router';
 import { RestauranteService } from '../../services/restaurante.service';
 import { Usuario } from '../../models/usuario';
 import { AuthLoginService } from '../../services/auth-login.service';
+import { NgbModal, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../../modals/modal/modal.component';
 
 @Component({
   selector: 'app-registro-restaurante',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, NgbTooltipModule],
   templateUrl: './registro-restaurante.component.html',
   styleUrl: './registro-restaurante.component.css'
 })
@@ -24,7 +26,8 @@ export class RegistroRestauranteComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private restauranteService: RestauranteService,
-    private authLoginService: AuthLoginService
+    private authLoginService: AuthLoginService,
+    private modalService: NgbModal,
   ){}
 
 
@@ -57,13 +60,13 @@ export class RegistroRestauranteComponent implements OnInit {
 
         this.restauranteService.registerRestaurante(formData, this.usuario.id).subscribe({
           next: () => {
-            console.log('Restaurante registrado con éxito');
+            this.openModal(true, this.usuario?.nombre, formData.nombre);
             this.router.navigate(['/dashboard-restaurante']); //verificar 
             this.altaRestForm.reset();
           },
           error: error => {
             console.error('Error durante el registro del restaurante', error);
-            console.log(formData, this.usuario?.id)
+            this.openModal(true, this.usuario?.nombre, formData.nombre, 'error');
           }
         });
       } else {
@@ -75,25 +78,54 @@ export class RegistroRestauranteComponent implements OnInit {
 
     //metodo para convertir la imagen a base64 y cargar el archivo
     onFileChange(event: any): void {
-      const reader = new FileReader();
-
-      if (event.target.files && event.target.files.length) {
-        const [file] = event.target.files;
-        reader.readAsDataURL(file);
-
-        reader.onload = () => {
-          this.altaRestForm.patchValue({
-            foto_portada: reader.result
-          });
-          // necesitamos activar el flag para que la validación se ejecute
-          this.altaRestForm.get('foto_portada')!.updateValueAndValidity();
-        };
+      const file = event.target.files[0]; //extraemos el primer archivo seleccionado en el input
+    
+      if (!file) {
+        return; // No se seleccionó ningún archivo, nada más que hacer aquí.
       }
+    
+      // verificamos el tipo de archivo introducido solo permitiendo que sean de tipo imagen
+      if (file.type.match(/image\/*/) == null) {
+        this.altaRestForm.get('foto_portada')!.setErrors({ 'invalid': true }); // establece el control como inválido
+        this.altaRestForm.get('foto_portada')!.markAsTouched(); // marca el control como tocado para mostrar el mensaje de error
+        return;
+      }
+    
+      const reader = new FileReader(); //creamos una instancia de FileReader que nos permite leer el contenido de archivos en el navegador
+      reader.readAsDataURL(file); // convertimos el archivo en una cadena de texto en base64
+    
+      // cuando hemos leido el archivo ejecutamos reader.onload, actualizamos el valor de foto_portada con la imagen en base64
+      reader.onload = () => {
+        this.altaRestForm.patchValue({
+          foto_portada: reader.result
+        });
+        this.altaRestForm.get('foto_portada')!.updateValueAndValidity(); // actualizamos el estado de validez de foto_portada después de establecer el nuevo valor
+      };
     }
+    
+    
 
     goBack() {
       window.history.back();  // Usa el historial del navegador para ir a la página anterior
     }
 
+   // Método para abrir el modal, le metemos los datos mediante input. Se podrían meter más.
+openModal(msg?: boolean, title?: string, content?:string, error?: string): void {
+  const modalRef = this.modalService.open(ModalComponent);
+  
+  if (msg) {
+    modalRef.componentInstance.title = this.usuario?.nombre;
+    
+    // si es un error y si es un alta o actualización
+    if (error === 'error') {
+        modalRef.componentInstance.content = 'Error durante el registro de ' + content;
+      }else {
+      // como no es error
+        modalRef.componentInstance.content = content + ' registrado con éxito.';
+      } 
+    }
+    
+    modalRef.componentInstance.msg = msg; 
+  } 
 
 }

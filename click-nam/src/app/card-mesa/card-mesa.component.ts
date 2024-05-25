@@ -59,8 +59,8 @@ export class CardMesaComponent implements OnInit{
   }
   openModalConfirmacion(): void {
     const modalRef = this.modalService.open(ModalConfirmacionComponent);
-    modalRef.componentInstance.mensaje = '¿ Esta seguro de que desea borrar la mesa '+this.mesa?.nombreMesa+' ?';
-    modalRef.componentInstance.title = 'Borrar Mesa';
+    modalRef.componentInstance.mensaje = '¿ Esta seguro de que desea borrar '+this.mesa?.nombreMesa+' ?';
+    modalRef.componentInstance.title = this.mesa.restaurante.nombre;
   
     //result es una promesa que contiene los resultados al cerrar el modal
     modalRef.result.then((result) => { 

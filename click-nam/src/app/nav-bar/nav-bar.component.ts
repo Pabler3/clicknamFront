@@ -37,6 +37,9 @@ export class NavBarComponent implements OnInit{
     this.router.navigate(['/home']);
   }
 
+  reservas():void{
+    this.router.navigate(['/lista-reservas']);
+  }
   openModal(): void {
     const modalRef = this.modalService.open(ModalUpdateComponent);
     modalRef.componentInstance.usuario = this.usuario;

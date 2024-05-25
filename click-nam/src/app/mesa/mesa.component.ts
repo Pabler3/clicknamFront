@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Restaurante } from '../models/restaurante';
 import { MesasService } from '../services/mesas.service';
 import { Mesa } from '../models/mesa';
+import { ModalComponent } from '../modals/modal/modal.component';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class MesaComponent {
     public activeModal: NgbActiveModal,
     private mesasService: MesasService,
     private router: Router,
+    private modalService: NgbModal,
   ){}
   
 
@@ -69,14 +71,13 @@ export class MesaComponent {
 
       this.mesasService.registerMesa(formData).subscribe({
         next: () => {
-          console.log('Mesa dada de alta con éxito');
           this.activeModal.close(this.restaurante);
           this.altaMesasForm.reset();
-          console.log(formData);
+          this.openModal(false, true, formData.nombreMesa);
         },
         error: error => {
           console.error('Error durante el registro de una nueva mesa', error);
-          console.log(formData)
+          this.openModal(false, true, formData.nombreMesa, 'error');
         }
       });
     } else {
@@ -97,9 +98,11 @@ export class MesaComponent {
         next: () => {
           console.log('Mesa actualizada con éxito');
           this.activeModal.close(this.mesa);
+          this.openModal(true, true, this.mesa.nombreMesa);
         },
         error: error => {
           console.error('Error durante la actualización de la mesa', error);
+          this.openModal(true, true, this.mesa.nombreMesa, 'error');
         }
       });
     } else {
@@ -108,5 +111,34 @@ export class MesaComponent {
       this.altaMesasForm.markAllAsTouched();
     }
   }
+
+ // Método para abrir el modal, le metemos los datos mediante input. Se podrían meter más.
+openModal(update?: boolean, msg?: boolean, title?: string, error?: string): void {
+  const modalRef = this.modalService.open(ModalComponent);
+  
+  if (msg) {
+    modalRef.componentInstance.title = this.restaurante.nombre;
+    
+    // si es un error y si es un alta o actualización
+    if (error === 'error') {
+      if (update) {
+        modalRef.componentInstance.content = 'Error durante la actualización de ' + title;
+      } else {
+        modalRef.componentInstance.content = 'Error durante el registro de ' + title;
+      }
+    } else {
+      // como no es error, es alta o actualización
+      if (update) {
+        modalRef.componentInstance.content = title + ' actualizada con éxito.';
+      } else {
+        modalRef.componentInstance.content = title + ' dada de alta con éxito.';
+      }
+    }
+    
+    modalRef.componentInstance.msg = msg; 
+  } 
+}
+
+
 
 }

@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['restaurantes-filtrados']);
       },error: () => {
         //modal para avisos de que no hay coincidencias
-        this.openModal('No hay coincidencias','No se han encontrado restaurantes con los valores indicados');
+        this.openModal('No hay coincidencias','No se han encontrado restaurantes con los valores indicados.');
       }
     }
     )
