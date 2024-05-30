@@ -1,0 +1,48 @@
+
+<div *ngIf="restaurante" class="container mt-5 pt-5">
+    <div class="row">
+        <div class="card mb-3 mt-5">
+            <img [src]="getMediaType(restaurante.foto_portada) + restaurante.foto_portada" style="height: 450px;" class="card-img-top mt-3 mb-3 img-fluid" alt="...">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center b-example-divider" style="height: 80px;">
+            <h1 class="text-center fs-1 mt-3">{{ restaurante.nombre }}</h1>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-7 px-md-5 text-center text-md-start">
+          <p class="lead"><i class="bi bi-info-square me-2"></i><u>{{ restaurante.nombre }}</u></p>
+          <br>
+          <ul>
+            <p class="lead"><i class="bi bi-menu-up me-2"></i>{{ restaurante.tipo_comida}}</p>
+            <p class="lead"><i class="bi bi-pin-map me-2"></i>{{ restaurante.direccion}}</p>
+            <p class="lead"><i class="bi bi-house me-2"></i>{{ restaurante.poblacion}}</p>
+            <p class="lead"><i class="bi bi-telephone me-2"></i>{{ restaurante.telefono}}</p>
+            <p class="lead"><i class="bi bi-coin me-2"></i>Precio medio: {{ restaurante.precio_medio}} €</p>
+          </ul>
+          <br>
+          <p class="lead">¡No te quedes con las ganas!</p>
+          
+        </div>
+        <!-- Aqui deberia meter un video pequeño -->
+        <div class="col-md-5 d-flex justify-content-center ">
+            <video class="featurette-image img-fluid mx-auto" width="250" height="250" controls autoplay loop muted>
+                <source src="../../../assets/videos/video-restaurante-detalle.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    
+    <div class="jumbotron">
+        <div class="row my-5" style="background-color: #e6e6e6;">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <p class="lead">
+                <i class="bi bi-chat-quote me-2"></i>{{ restaurante.descripcion_corta}}
+            </p>
+            </div>
+        </div>
+    </div> 
+    <!-- Aqui deberiamos pintar las mesas o como se vaya a reservar   -->
+</div>

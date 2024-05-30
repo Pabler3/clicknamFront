@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { RegistroUsuarioClienteComponent } from './registro/registro-usuario-cliente/registro-usuario-cliente.component';
-import { RegistroUsuarioRestauranteComponent } from './registro/registro-usuario-restaurante/registro-usuario-restaurante.component';
-import { RegistroRestauranteComponent } from './registro/registro-restaurante/registro-restaurante.component';
-import { RestauranteDetalleComponent } from './restaurante-detalle/restaurante-detalle.component';
-import { DashboardRestauranteComponent } from './dashboard-restaurante/dashboard-restaurante.component';
-import { RestaurantesFiltradosComponent } from './restaurantes-filtrados/restaurantes-filtrados.component';
-import { ListaReservasComponent } from './lista-reservas/lista-reservas.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LogInComponent } from './pages/log-in/log-in.component';
+import { RegistroUsuarioClienteComponent } from './pages/registro/registro-usuario-cliente/registro-usuario-cliente.component';
+import { RegistroUsuarioRestauranteComponent } from './pages/registro/registro-usuario-restaurante/registro-usuario-restaurante.component';
+import { RegistroRestauranteComponent } from './pages/registro/registro-restaurante/registro-restaurante.component';
+import { RestauranteDetalleComponent } from './pages/restaurante-detalle/restaurante-detalle.component';
+import { DashboardRestauranteComponent } from './pages/dashboard-restaurante/dashboard-restaurante.component';
+import { RestaurantesFiltradosComponent } from './pages/restaurantes-filtrados/restaurantes-filtrados.component';
+import { ListaReservasComponent } from './pages/lista-reservas/lista-reservas.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
