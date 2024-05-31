@@ -75,15 +75,15 @@
         </div>
       </div>
       <div class="container mt-3 pt-3">
-        <table class="table table-striped text-center">
+        <table class="table table-striped text-center table-responsive">
           <thead>
               <tr style="background-color: #9eada8;" class="lead">
-                  <th scope="col">Id Reserva</th>
+                  <th scope="col">ID</th>
                   <th scope="col">Usuario</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Fecha</th>
                   <th scope="col">Sitio</th>
-                  <th scope="col">Zona</th>
+                  <th scope="col">Tlf - Usuario</th>
               </tr>
           </thead>
           <tbody>
@@ -93,7 +93,7 @@
                 <td class="lead">{{reser.horaInicio}}</td>
                 <td class="lead">{{ reser.dia }}/{{reser.mes}}/{{reser.ano}}</td>
                 <td class="lead">{{reser.mesa.nombreMesa}}</td>
-                <td class="lead">{{reser.mesa.infoMesa}}</td>
+                <td class="lead">{{reser.usuario.telefono}}</td>
               </tr>
           </tbody>
         </table>

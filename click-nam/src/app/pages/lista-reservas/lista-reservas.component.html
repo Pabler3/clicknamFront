@@ -6,29 +6,29 @@
             <hr class="featurette-divider">
             <p class="lead">Recuerda cancelar tu reserva si por algún motivo no vas a poder acudir, ¡ Gracias !</p>
         </div>
-        <table class="table table-striped text-center">
-            <thead>
-                <tr style="background-color: #9eada8;" class="lead">
-                    <th scope="col">#</th>
-                    <th scope="col">Restaurante</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let reserva of reservas; let i = index;">
-                    <th class="lead" scope="row">{{ i + 1 }}</th>
-                    <td class="lead">
-                        {{ reserva.mesa.restaurante.nombre }}
-                    </td>
-                    <td class="lead">{{reserva.horaInicio}}</td>
-                    <td class="lead">{{ reserva.dia }}/{{reserva.mes}}/{{reserva.ano}}</td>
-                    <td><i class="bi bi-eye-fill fs-4" (click)="openModalReserva(reserva)"></i>
-                    <i class="bi bi-x-circle fs-4" (click)="openModalConfirmacion(reserva)"></i></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive"> 
+          <table class="table table-striped text-center">
+              <thead>
+                  <tr style="background-color: #9eada8;" class="lead">
+                      <th scope="col">ID</th>
+                      <th scope="col">Restaurante</th>
+                      <th scope="col">Hora</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let reserva of reservas">
+                      <th class="lead">{{ reserva.id }}</th>
+                      <td class="lead">{{ reserva.mesa.restaurante.nombre }}</td>
+                      <td class="lead">{{reserva.horaInicio}}</td>
+                      <td class="lead">{{ reserva.dia }}/{{reserva.mes}}/{{reserva.ano}}</td>
+                      <td><i class="bi bi-eye-fill fs-4" (click)="openModalReserva(reserva)"></i>
+                      <i class="bi bi-x-circle fs-4" (click)="openModalConfirmacion(reserva)"></i></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div> 
         <hr class="featurette-divider">
         <button type="button" class="btn me-2" id="button-volver" routerLink="/home">
             <i class="bi bi-box-arrow-left"></i>

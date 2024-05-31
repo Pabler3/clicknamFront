@@ -24,3 +24,9 @@ button:hover{
     border-color: #9eada8;
   
 }
+
+@media (max-width: 575px ){
+    .table-responsive th, .table-responsive td {
+        font-size: 11px; /* Reduce el tamaño de la fuente para pantallas pequeñas */
+    }
+}
